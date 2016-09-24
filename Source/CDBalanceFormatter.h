@@ -5,7 +5,7 @@
 
 @interface CDBalanceFormatter : NSObject
 
-- (id)initWithString:(NSString *)str;
+- (instancetype)initWithString:(NSString *)str;
 
 - (void)parse:(NSString *)open index:(NSUInteger)openIndex level:(NSUInteger)level;
 

@@ -13,7 +13,7 @@
 @property (nonatomic, assign) NSUInteger offset;
 
 - (void)advanceByLength:(NSUInteger)length;
-- (NSUInteger)remaining;
+@property (readonly) NSUInteger remaining;
 
 - (uint8_t)readByte;
 
@@ -33,7 +33,7 @@
 
 - (void)appendBytesOfLength:(NSUInteger)length intoData:(NSMutableData *)data;
 - (void)readBytesOfLength:(NSUInteger)length intoBuffer:(void *)buf;
-- (BOOL)isAtEnd;
+@property (readonly, getter=isAtEnd) BOOL atEnd;
 
 - (NSString *)readCString;
 - (NSString *)readStringOfLength:(NSUInteger)length encoding:(NSStringEncoding)encoding;

@@ -10,8 +10,8 @@
 
 @interface CDFatArch : NSObject
 
-- (id)initWithMachOFile:(CDMachOFile *)machOFile;
-- (id)initWithDataCursor:(CDDataCursor *)cursor;
+- (instancetype)initWithMachOFile:(CDMachOFile *)machOFile;
+- (instancetype)initWithDataCursor:(CDDataCursor *)cursor;
 
 @property (assign) cpu_type_t cputype;
 @property (assign) cpu_subtype_t cpusubtype;

@@ -8,13 +8,13 @@
 #include <mach/machine.h> // For cpu_type_t, cpu_subtype_t
 #include <mach-o/loader.h>
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, CDByteOrder) {
     CDByteOrder_LittleEndian = 0,
     CDByteOrder_BigEndian = 1,
-} CDByteOrder;
+};
 
 @class CDLCSegment;
-@class CDLCDyldInfo, CDLCDylib, CDMachOFile, CDLCSymbolTable, CDLCDynamicSymbolTable, CDLCVersionMinimum, CDLCSourceVersion;
+@class CDLCDyldInfo, CDLCDylib, CDMachOFile, CDLCSymbolTable, CDLCDynamicSymbolTable, CDLCVersionMinimum, CDLCSourceVersion, CDLoadCommand, CDLCRunPath;
 
 @interface CDMachOFile : CDFile
 
@@ -29,13 +29,13 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) cpu_type_t maskedCPUType;
 @property (nonatomic, readonly) cpu_subtype_t maskedCPUSubtype;
 
-@property (readonly) NSArray *loadCommands;
-@property (readonly) NSArray *dylibLoadCommands;
-@property (readonly) NSArray *segments;
-@property (readonly) NSArray *runPaths;
-@property (readonly) NSArray *runPathCommands;
-@property (readonly) NSArray *dyldEnvironment;
-@property (readonly) NSArray *reExportedDylibs;
+@property (readonly, copy) NSArray<__kindof CDLoadCommand *> *loadCommands;
+@property (readonly, copy) NSArray<CDLCDylib*> *dylibLoadCommands;
+@property (readonly, copy) NSArray<CDLCSegment*> *segments;
+@property (readonly, copy) NSArray<NSString*> *runPaths;
+@property (readonly, copy) NSArray<CDLCRunPath*> *runPathCommands;
+@property (readonly, copy) NSArray<CDLoadCommand*> *dyldEnvironment;
+@property (readonly, copy) NSArray<CDLoadCommand*> *reExportedDylibs;
 
 @property (strong) CDLCSymbolTable *symbolTable;
 @property (strong) CDLCDynamicSymbolTable *dynamicSymbolTable;
@@ -46,10 +46,10 @@ typedef enum : NSUInteger {
 @property (strong) CDLCSourceVersion *sourceVersion;
 
 @property (readonly) BOOL uses64BitABI;
-- (NSUInteger)ptrSize;
+@property (readonly) NSUInteger ptrSize;
 
-- (NSString *)filetypeDescription;
-- (NSString *)flagDescription;
+@property (readonly, copy/*, nullable*/) NSString *filetypeDescription;
+@property (readonly, copy/*, nonnull*/) NSString *flagDescription;
 
 - (CDLCSegment *)dataConstSegment;
 - (CDLCSegment *)segmentWithName:(NSString *)segmentName;
@@ -58,12 +58,12 @@ typedef enum : NSUInteger {
 
 - (NSUInteger)dataOffsetForAddress:(NSUInteger)address;
 
-- (const void *)bytes;
-- (const void *)bytesAtOffset:(NSUInteger)offset;
+@property (readonly) const void* bytes NS_RETURNS_INNER_POINTER;
+- (const void *)bytesAtOffset:(NSUInteger)offset NS_RETURNS_INNER_POINTER;
 
-@property (nonatomic, readonly) NSString *importBaseName;
+@property (nonatomic, readonly, copy) NSString *importBaseName;
 
-@property (nonatomic, readonly) BOOL isEncrypted;
+@property (nonatomic, readonly, getter=isEncrypted) BOOL encrypted;
 @property (nonatomic, readonly) BOOL hasProtectedSegments;
 @property (nonatomic, readonly) BOOL canDecryptAllSegments;
 

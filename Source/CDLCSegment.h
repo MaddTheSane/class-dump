@@ -7,16 +7,18 @@
 
 @class CDSection;
 
-#define CDSegmentProtectedMagic_None     0
-#define CDSegmentProtectedMagic_AES      0xc2286295
-#define CDSegmentProtectedMagic_Blowfish 0x2e69cf40
+typedef NS_ENUM(uint32_t, CDSegmentProtectedMagic) {
+    CDSegmentProtectedMagic_None     = 0,
+    CDSegmentProtectedMagic_AES      = 0xc2286295,
+    CDSegmentProtectedMagic_Blowfish = 0x2e69cf40
+};
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, CDSegmentEncryptionType) {
     CDSegmentEncryptionType_None     = 0,
     CDSegmentEncryptionType_AES      = 1, // 10.5 and earlier (AES)
     CDSegmentEncryptionType_Blowfish = 2, // 10.6 (Blowfish)
     CDSegmentEncryptionType_Unknown
-} CDSegmentEncryptionType;
+};
 
 extern NSString *CDSegmentEncryptionTypeName(CDSegmentEncryptionType type);
 
@@ -35,7 +37,7 @@ extern NSString *CDSegmentEncryptionTypeName(CDSegmentEncryptionType type);
 @property (nonatomic, readonly) CDSegmentEncryptionType encryptionType;
 @property (nonatomic, readonly) BOOL canDecrypt;
 
-- (NSString *)flagDescription;
+@property (readonly, copy) NSString *flagDescription;
 
 - (BOOL)containsAddress:(NSUInteger)address;
 - (CDSection *)sectionContainingAddress:(NSUInteger)address;

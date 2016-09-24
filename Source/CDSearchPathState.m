@@ -14,7 +14,7 @@
 @implementation CDSearchPathState
 {
     NSString *_executablePath;
-    NSMutableArray *_searchPathStack;
+    NSMutableArray<NSArray<NSString*>*> *_searchPathStack;
 }
 
 - (id)init;

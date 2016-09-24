@@ -3,15 +3,18 @@
 //  This file is part of class-dump, a utility for examining the Objective-C segment of Mach-O files.
 //  Copyright (C) 1997-1998, 2000-2001, 2004-2015 Steve Nygard.
 
-@interface NSArray (CDExtensions)
 
-- (NSArray *)reversedArray;
+#import <Foundation/NSArray.h>
+
+@interface NSArray<ObjectType> (CDExtensions)
+
+- (NSArray<ObjectType> *)reversedArray;
 
 @end
 
-@interface NSArray (CDTopoSort)
+@interface NSArray<ObjectType> (CDTopoSort)
 
-- (NSArray *)topologicallySortedArray;
+- (NSArray<ObjectType> *)topologicallySortedArray;
 
 @end
 

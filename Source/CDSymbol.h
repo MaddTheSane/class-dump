@@ -11,27 +11,27 @@ extern NSString *const ObjCClassSymbolPrefix;
 
 @interface CDSymbol : NSObject
 
-- (id)initWithName:(NSString *)name machOFile:(CDMachOFile *)machOFile nlist32:(struct nlist)nlist32;
-- (id)initWithName:(NSString *)name machOFile:(CDMachOFile *)machOFile nlist64:(struct nlist_64)nlist64;
+- (instancetype)initWithName:(NSString *)name machOFile:(CDMachOFile *)machOFile nlist32:(struct nlist)nlist32;
+- (instancetype)initWithName:(NSString *)name machOFile:(CDMachOFile *)machOFile nlist64:(struct nlist_64)nlist64;
 
 @property (nonatomic, readonly) uint64_t value;
 @property (readonly) NSString *name;
 @property (nonatomic, readonly) CDSection *section;
 @property (nonatomic, readonly) CDLCDylib *dylibLoadCommand;
 
-@property (nonatomic, readonly) BOOL isExternal;
-@property (nonatomic, readonly) BOOL isPrivateExternal;
+@property (nonatomic, readonly, getter=isExternal) BOOL external;
+@property (nonatomic, readonly, getter=isPrivateExternal) BOOL privateExternal;
 @property (nonatomic, readonly) NSUInteger stab;
 @property (nonatomic, readonly) NSUInteger type;
-@property (nonatomic, readonly) BOOL isDefined;
-@property (nonatomic, readonly) BOOL isAbsolute;
-@property (nonatomic, readonly) BOOL isInSection;
-@property (nonatomic, readonly) BOOL isPrebound;
-@property (nonatomic, readonly) BOOL isIndirect;
-@property (nonatomic, readonly) BOOL isCommon;
-@property (nonatomic, readonly) BOOL isInTextSection;
-@property (nonatomic, readonly) BOOL isInDataSection;
-@property (nonatomic, readonly) BOOL isInBssSection;
+@property (nonatomic, readonly, getter=isDefined) BOOL defined;
+@property (nonatomic, readonly, getter=isAbsolute) BOOL absolute;
+@property (nonatomic, readonly, getter=isInSection) BOOL inSection;
+@property (nonatomic, readonly, getter=isPrebound) BOOL prebound;
+@property (nonatomic, readonly, getter=isIndirect) BOOL indirect;
+@property (nonatomic, readonly, getter=isCommon) BOOL common;
+@property (nonatomic, readonly, getter=isInTextSection) BOOL inTextSection;
+@property (nonatomic, readonly, getter=isInDataSection) BOOL inDataSection;
+@property (nonatomic, readonly, getter=isInBssSection) BOOL inBssSection;
 @property (nonatomic, readonly) NSUInteger referenceType;
 @property (nonatomic, readonly) NSString *referenceTypeName;
 @property (nonatomic, readonly) NSString *shortTypeDescription;

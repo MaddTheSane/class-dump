@@ -220,7 +220,7 @@
     objc2Class.vtable     = [cursor readPtr];
 
     uint64_t value        = [cursor readPtr];
-    class.isSwiftClass    = (value & 0x1) != 0;
+    class.swiftClass      = (value & 0x1) != 0;
     objc2Class.data       = value & ~7;
 
     objc2Class.reserved1  = [cursor readPtr];
@@ -268,7 +268,7 @@
         CDSymbol *classSymbol = [[self.machOFile symbolTable] symbolForClassName:str];
         
         if (classSymbol != nil)
-            aClass.isExported = [classSymbol isExternal];
+            aClass.exported = [classSymbol isExternal];
     }
     
     {

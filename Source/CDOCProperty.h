@@ -7,7 +7,7 @@
 
 @interface CDOCProperty : NSObject
 
-- (id)initWithName:(NSString *)name attributes:(NSString *)attributes;
+- (instancetype)initWithName:(NSString *)name attributes:(NSString *)attributes;
 
 @property (readonly) NSString *name;
 @property (readonly) NSString *attributeString;

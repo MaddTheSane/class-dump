@@ -15,7 +15,7 @@
 - (void)createUniquedProtocols;
 
 // Results
-- (NSArray *)uniqueProtocolsAtAddresses:(NSArray *)addresses;
-- (NSArray *)uniqueProtocolsSortedByName;
+- (NSArray<CDOCProtocol*> *)uniqueProtocolsAtAddresses:(NSArray *)addresses;
+- (NSArray<CDOCProtocol*> *)uniqueProtocolsSortedByName;
 
 @end

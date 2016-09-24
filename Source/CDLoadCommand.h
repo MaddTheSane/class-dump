@@ -11,11 +11,11 @@
 
 @interface CDLoadCommand : NSObject
 
-+ (id)loadCommandWithDataCursor:(CDMachOFileDataCursor *)cursor;
++ (CDLoadCommand*)loadCommandWithDataCursor:(CDMachOFileDataCursor *)cursor NS_SWIFT_NAME(loadCommand(with:));
 
-- (id)initWithDataCursor:(CDMachOFileDataCursor *)cursor;
+- (instancetype)initWithDataCursor:(CDMachOFileDataCursor *)cursor;
 
-- (NSString *)extraDescription;
+@property (readonly, copy) NSString *extraDescription;
 
 @property (weak, readonly) CDMachOFile *machOFile;
 @property (readonly) NSUInteger commandOffset;

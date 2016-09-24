@@ -3,22 +3,24 @@
 //  This file is part of class-dump, a utility for examining the Objective-C segment of Mach-O files.
 //  Copyright (C) 1997-1998, 2000-2001, 2004-2015 Steve Nygard.
 
+#import <Foundation/NSObject.h>
+
 @class CDTypeController, CDTypeFormatter, CDTypeName;
 
 @interface CDType : NSObject <NSCopying>
 
-- (id)initSimpleType:(int)type;
-- (id)initIDType:(CDTypeName *)name;
-- (id)initIDType:(CDTypeName *)name withProtocols:(NSArray *)protocols;
-- (id)initIDTypeWithProtocols:(NSArray *)protocols;
-- (id)initStructType:(CDTypeName *)name members:(NSArray *)members;
-- (id)initUnionType:(CDTypeName *)name members:(NSArray *)members;
-- (id)initBitfieldType:(NSString *)bitfieldSize;
-- (id)initArrayType:(CDType *)type count:(NSString *)count;
-- (id)initPointerType:(CDType *)type;
-- (id)initFunctionPointerType;
-- (id)initBlockTypeWithTypes:(NSArray *)types;
-- (id)initModifier:(int)modifier type:(CDType *)type;
+- (instancetype)initSimpleType:(int)type;
+- (instancetype)initIDType:(CDTypeName *)name;
+- (instancetype)initIDType:(CDTypeName *)name withProtocols:(NSArray *)protocols;
+- (instancetype)initIDTypeWithProtocols:(NSArray *)protocols;
+- (instancetype)initStructType:(CDTypeName *)name members:(NSArray *)members;
+- (instancetype)initUnionType:(CDTypeName *)name members:(NSArray *)members;
+- (instancetype)initBitfieldType:(NSString *)bitfieldSize;
+- (instancetype)initArrayType:(CDType *)type count:(NSString *)count;
+- (instancetype)initPointerType:(CDType *)type;
+- (instancetype)initFunctionPointerType;
+- (instancetype)initBlockTypeWithTypes:(NSArray *)types;
+- (instancetype)initModifier:(int)modifier type:(CDType *)type;
 
 @property (strong) NSString *variableName;
 

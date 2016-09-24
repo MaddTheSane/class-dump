@@ -133,8 +133,8 @@ static NSString *CDMachOFileMagicNumberDescription(uint32_t magic)
 
 - (void)_readLoadCommands:(CDMachOFileDataCursor *)cursor count:(uint32_t)count;
 {
-    NSMutableArray *loadCommands      = [[NSMutableArray alloc] init];
-    NSMutableArray *dylibLoadCommands = [[NSMutableArray alloc] init];
+    NSMutableArray<__kindof CDLoadCommand *> *loadCommands      = [[NSMutableArray alloc] initWithCapacity:count];
+    NSMutableArray<CDLCDylib*> *dylibLoadCommands = [[NSMutableArray alloc] init];
     NSMutableArray *segments          = [[NSMutableArray alloc] init];
     NSMutableArray *runPaths          = [[NSMutableArray alloc] init];
     NSMutableArray *runPathCommands   = [[NSMutableArray alloc] init];
@@ -142,12 +142,14 @@ static NSString *CDMachOFileMagicNumberDescription(uint32_t magic)
     NSMutableArray *reExportedDylibs  = [[NSMutableArray alloc] init];
     
     for (uint32_t index = 0; index < count; index++) {
-        CDLoadCommand *loadCommand = [CDLoadCommand loadCommandWithDataCursor:cursor];
+        __kindof CDLoadCommand *loadCommand = [CDLoadCommand loadCommandWithDataCursor:cursor];
         if (loadCommand != nil) {
             [loadCommands addObject:loadCommand];
 
             if (loadCommand.cmd == LC_VERSION_MIN_MACOSX)                        self.minVersionMacOSX = (CDLCVersionMinimum *)loadCommand;
             if (loadCommand.cmd == LC_VERSION_MIN_IPHONEOS)                      self.minVersionIOS = (CDLCVersionMinimum *)loadCommand;
+            //if (loadCommand.cmd == LC_VERSION_MIN_TVOS)                          self.minVersionIOS = (CDLCVersionMinimum *)loadCommand;
+            //if (loadCommand.cmd == LC_VERSION_MIN_WATCHOS)                       self.minVersionIOS = (CDLCVersionMinimum *)loadCommand;
             if (loadCommand.cmd == LC_DYLD_ENVIRONMENT)                          [dyldEnvironment addObject:loadCommand];
             if (loadCommand.cmd == LC_REEXPORT_DYLIB)                            [reExportedDylibs addObject:loadCommand];
             if (loadCommand.cmd == LC_ID_DYLIB)                                  self.dylibIdentifier = (CDLCDylib *)loadCommand;

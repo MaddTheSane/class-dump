@@ -9,11 +9,11 @@
 
 @interface CDMachOFileDataCursor : CDDataCursor
 
-- (id)initWithFile:(CDMachOFile *)machOFile;
-- (id)initWithFile:(CDMachOFile *)machOFile offset:(NSUInteger)offset;
-- (id)initWithFile:(CDMachOFile *)machOFile address:(NSUInteger)address;
+- (instancetype)initWithFile:(CDMachOFile *)machOFile;
+- (instancetype)initWithFile:(CDMachOFile *)machOFile offset:(NSUInteger)offset;
+- (instancetype)initWithFile:(CDMachOFile *)machOFile address:(NSUInteger)address;
 
-- (id)initWithSection:(CDSection *)section;
+- (instancetype)initWithSection:(CDSection *)section;
 
 @property (nonatomic, weak, readonly) CDMachOFile *machOFile;
 

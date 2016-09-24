@@ -83,7 +83,7 @@
     if (value != NULL)
         *value = ch;
 
-    [self setScanLocation:[self scanLocation] + 1];
+    self.scanLocation += 1;
 
     return YES;
 }

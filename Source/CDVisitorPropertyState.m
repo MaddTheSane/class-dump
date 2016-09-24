@@ -14,8 +14,8 @@
 
 @implementation CDVisitorPropertyState
 {
-    NSMutableDictionary *_propertiesByAccessor; // NSString (accessor)       -> CDOCProperty
-    NSMutableDictionary *_propertiesByName;     // NSString (property name)  -> CDOCProperty
+    NSMutableDictionary<NSString*,CDOCProperty*> *_propertiesByAccessor; // NSString (accessor)       -> CDOCProperty
+    NSMutableDictionary<NSString*,CDOCProperty*> *_propertiesByName;     // NSString (property name)  -> CDOCProperty
 }
 
 - (id)initWithProperties:(NSArray *)properties;

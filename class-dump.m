@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
                     
                 case 'C': {
                     NSError *error;
-                    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:[NSString stringWithUTF8String:optarg]
+                    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:@(optarg)
                                                                                                        options:(NSRegularExpressionOptions)0
                                                                                                          error:&error];
                     if (regularExpression != nil) {
@@ -196,7 +196,7 @@ int main(int argc, char *argv[])
                 }
                     
                 case 'f': {
-                    searchString = [NSString stringWithUTF8String:optarg];
+                    searchString =  @(optarg);
                     break;
                 }
                     
@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
                     break;
                     
                 case 'o':
-                    outputPath = [NSString stringWithUTF8String:optarg];
+                    outputPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:optarg length:strlen(optarg)];
                     break;
                     
                 case 'r':

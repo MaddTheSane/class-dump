@@ -238,7 +238,7 @@ NSString *CDSegmentEncryptionTypeName(CDSegmentEncryptionType type)
         if (self.filesize <= PAGE_SIZE * 3) {
             memcpy(dest, src, [self filesize]);
         } else {
-            uint8_t keyData[64] = { 0x6f, 0x75, 0x72, 0x68, 0x61, 0x72, 0x64, 0x77, 0x6f, 0x72, 0x6b, 0x62, 0x79, 0x74, 0x68, 0x65,
+            static const uint8_t keyData[64] = { 0x6f, 0x75, 0x72, 0x68, 0x61, 0x72, 0x64, 0x77, 0x6f, 0x72, 0x6b, 0x62, 0x79, 0x74, 0x68, 0x65,
                                     0x73, 0x65, 0x77, 0x6f, 0x72, 0x64, 0x73, 0x67, 0x75, 0x61, 0x72, 0x64, 0x65, 0x64, 0x70, 0x6c,
                                     0x65, 0x61, 0x73, 0x65, 0x64, 0x6f, 0x6e, 0x74, 0x73, 0x74, 0x65, 0x61, 0x6c, 0x28, 0x63, 0x29,
                                     0x41, 0x70, 0x70, 0x6c, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x75, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x63, };
@@ -249,12 +249,12 @@ NSString *CDSegmentEncryptionTypeName(CDSegmentEncryptionType type)
             dest += PAGE_SIZE * 3;
             NSUInteger count = (self.filesize / PAGE_SIZE) - 3;
             
-            uint32_t magic = OSReadLittleInt32(src, 0);
+            CDSegmentProtectedMagic magic = OSReadLittleInt32(src, 0);
             if (magic == CDSegmentProtectedMagic_None) {
                 memcpy(dest, src, [self filesize] - PAGE_SIZE * 3);
             } else if (magic == CDSegmentProtectedMagic_Blowfish) {
                 // 10.6 decryption
-                CCCryptorRef cryptor;
+                CCCryptorRef cryptor = NULL;
                 CCCryptorStatus status = CCCryptorCreate(kCCDecrypt, kCCAlgorithmBlowfish, 0, keyData, sizeof(keyData), NULL, &cryptor);
                 NSParameterAssert(status == kCCSuccess);
                 for (NSUInteger index = 0; index < count; index++) {

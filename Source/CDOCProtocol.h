@@ -3,6 +3,8 @@
 //  This file is part of class-dump, a utility for examining the Objective-C segment of Mach-O files.
 //  Copyright (C) 1997-1998, 2000-2001, 2004-2015 Steve Nygard.
 
+#import <Foundation/NSObject.h>
+
 @class CDTypeController;
 @class CDVisitor, CDVisitorPropertyState;
 @class CDOCMethod, CDOCProperty;
@@ -11,35 +13,35 @@
 
 @property (strong) NSString *name;
 
-@property (readonly) NSArray *protocols;
+@property (readonly) NSArray<CDOCProtocol *> *protocols;
 - (void)addProtocol:(CDOCProtocol *)protocol;
 - (void)removeProtocol:(CDOCProtocol *)protocol;
 @property (nonatomic, readonly) NSArray *protocolNames;
 @property (nonatomic, readonly) NSString *protocolsString;
 
-@property (nonatomic, readonly) NSArray *classMethods; // TODO: NSArray vs. NSMutableArray
+@property (nonatomic, readonly) NSArray<CDOCMethod *> *classMethods; // TODO: NSArray vs. NSMutableArray
 - (void)addClassMethod:(CDOCMethod *)method;
 
-@property (nonatomic, readonly) NSArray *instanceMethods;
+@property (nonatomic, readonly) NSArray<CDOCMethod *> *instanceMethods;
 - (void)addInstanceMethod:(CDOCMethod *)method;
 
-@property (nonatomic, readonly) NSArray *optionalClassMethods;
+@property (nonatomic, readonly) NSArray<CDOCMethod *> *optionalClassMethods;
 - (void)addOptionalClassMethod:(CDOCMethod *)method;
 
-@property (nonatomic, readonly) NSArray *optionalInstanceMethods;
+@property (nonatomic, readonly) NSArray<CDOCMethod *> *optionalInstanceMethods;
 - (void)addOptionalInstanceMethod:(CDOCMethod *)method;
 
-@property (nonatomic, readonly) NSArray *properties;
+@property (nonatomic, readonly) NSArray<CDOCProperty *> *properties;
 - (void)addProperty:(CDOCProperty *)property;
 
 @property (nonatomic, readonly) BOOL hasMethods;
 
 - (void)registerTypesWithObject:(CDTypeController *)typeController phase:(NSUInteger)phase;
-- (void)registerTypesFromMethods:(NSArray *)methods withObject:(CDTypeController *)typeController phase:(NSUInteger)phase;
+- (void)registerTypesFromMethods:(NSArray<CDOCMethod *> *)methods withObject:(CDTypeController *)typeController phase:(NSUInteger)phase;
 
 - (NSComparisonResult)ascendingCompareByName:(CDOCProtocol *)other;
 
-- (NSString *)methodSearchContext;
+@property (readonly, copy) NSString *methodSearchContext;
 - (void)recursivelyVisit:(CDVisitor *)visitor;
 
 - (void)visitMethods:(CDVisitor *)visitor propertyState:(CDVisitorPropertyState *)propertyState;
