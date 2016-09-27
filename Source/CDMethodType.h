@@ -9,7 +9,7 @@
 
 - (instancetype)initWithType:(CDType *)type offset:(NSString *)offset;
 
-@property (readonly) CDType *type;
-@property (readonly) NSString *offset;
+@property (readonly, copy) CDType *type;
+@property (readonly, copy) NSString *offset;
 
 @end

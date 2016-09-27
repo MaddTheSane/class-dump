@@ -15,7 +15,7 @@
 #import "CDVisitorPropertyState.h"
 
 @interface CDOCProtocol ()
-@property (nonatomic, readonly) NSString *sortableName;
+@property (nonatomic, readonly, copy) NSString *sortableName;
 @end
 
 #pragma mark -

@@ -34,6 +34,8 @@ static BOOL debug = NO;
     BOOL _isReadOnly;
     BOOL _isDynamic;
 }
+@synthesize readOnly = _isReadOnly;
+@synthesize dynamic = _isDynamic;
 
 - (id)initWithName:(NSString *)name attributes:(NSString *)attributes;
 {

@@ -6,6 +6,8 @@
 #include <mach/machine.h> // For cpu_type_t, cpu_subtype_t
 #import <Foundation/NSObject.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef struct CDArch {
     cpu_type_t cputype;
     cpu_subtype_t cpusubtype;
@@ -22,18 +24,20 @@ BOOL CDArchUses64BitLibraries(CDArch arch);
 @interface CDFile : NSObject
 
 //! Returns CDFatFile or CDMachOFile
-+ (CDFile*)fileWithContentsOfFile:(NSString *)filename searchPathState:(CDSearchPathState *)searchPathState;
++ (nullable CDFile*)fileWithContentsOfFile:(NSString *)filename searchPathState:(nullable CDSearchPathState *)searchPathState NS_SWIFT_NAME(file(contentsOf:searchPathState:));
 
-- (instancetype)initWithData:(NSData *)data filename:(NSString *)filename searchPathState:(CDSearchPathState *)searchPathState;
+- (nullable instancetype)initWithData:(NSData *)data filename:(NSString *)filename searchPathState:(nullable CDSearchPathState *)searchPathState;
 
 @property (readonly, copy) NSString *filename;
 @property (readonly, copy) NSData *data;
-@property (readonly) CDSearchPathState *searchPathState;
+@property (readonly, nullable, retain) CDSearchPathState *searchPathState;
 
 - (BOOL)bestMatchForLocalArch:(CDArch *)oArchPtr;
 - (BOOL)bestMatchForArch:(CDArch *)ioArchPtr;
-- (CDMachOFile *)machOFileWithArch:(CDArch)arch;
+- (nullable CDMachOFile *)machOFileWithArch:(CDArch)arch;
 
-@property (nonatomic, readonly) NSString *architectureNameDescription;
+@property (nonatomic, readonly, copy) NSString *architectureNameDescription;
 
 @end
+
+NS_ASSUME_NONNULL_END

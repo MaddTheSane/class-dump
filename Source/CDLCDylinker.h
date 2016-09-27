@@ -7,6 +7,6 @@
 
 @interface CDLCDylinker : CDLoadCommand
 
-@property (readonly) NSString *name;
+@property (readonly, copy) NSString *name;
 
 @end

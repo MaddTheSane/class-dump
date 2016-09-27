@@ -10,7 +10,7 @@
 @interface CDOCCategory : CDOCProtocol <CDTopologicalSort>
 
 @property (strong) CDOCClassReference *classRef;
-@property (strong, readonly) NSString *className;
+@property (readonly, copy) NSString *className;
 
 - (NSString *)methodSearchContext;
 - (void)recursivelyVisit:(CDVisitor *)visitor;

@@ -12,13 +12,13 @@
 
 @interface CDObjectiveCProcessor : NSObject
 
-- (id)initWithMachOFile:(CDMachOFile *)machOFile;
+- (instancetype)initWithMachOFile:(CDMachOFile *)machOFile;
 
 @property (readonly) CDMachOFile *machOFile;
 @property (nonatomic, readonly) BOOL hasObjectiveCData;
 
 @property (nonatomic, readonly) CDSection *objcImageInfoSection;
-@property (nonatomic, readonly) NSString *garbageCollectionStatus;
+@property (nonatomic, readonly, copy) NSString *garbageCollectionStatus;
 
 - (void)addClass:(CDOCClass *)aClass withAddress:(uint64_t)address;
 - (CDOCClass *)classWithAddress:(uint64_t)address;

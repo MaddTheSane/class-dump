@@ -15,13 +15,13 @@ typedef NS_ENUM(NSUInteger, CDNodeColor) {
 
 - (id)initWithObject:(id <CDTopologicalSort>)object;
 
-@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly, copy) NSString *identifier;
 @property (readonly) id <CDTopologicalSort> sortableObject;
 
-- (NSArray *)dependancies;
+- (NSArray<NSString*> *)dependancies;
 - (void)addDependancy:(NSString *)identifier;
 - (void)removeDependancy:(NSString *)identifier;
-- (void)addDependanciesFromArray:(NSArray *)identifiers;
+- (void)addDependanciesFromArray:(NSArray<NSString*> *)identifiers;
 @property (nonatomic, readonly) NSString *dependancyDescription;
 
 @property (assign) CDNodeColor color;

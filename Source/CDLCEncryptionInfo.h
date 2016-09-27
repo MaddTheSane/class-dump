@@ -11,6 +11,6 @@
 @property (nonatomic, readonly) uint32_t cryptsize;
 @property (nonatomic, readonly) uint32_t cryptid;
 
-@property (nonatomic, readonly) BOOL isEncrypted;
+@property (nonatomic, readonly, getter=isEncrypted) BOOL encrypted;
 
 @end

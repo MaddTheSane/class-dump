@@ -15,7 +15,7 @@ extern NSString *const ObjCClassSymbolPrefix;
 - (instancetype)initWithName:(NSString *)name machOFile:(CDMachOFile *)machOFile nlist64:(struct nlist_64)nlist64;
 
 @property (nonatomic, readonly) uint64_t value;
-@property (readonly) NSString *name;
+@property (readonly, copy) NSString *name;
 @property (nonatomic, readonly) CDSection *section;
 @property (nonatomic, readonly) CDLCDylib *dylibLoadCommand;
 
@@ -33,9 +33,9 @@ extern NSString *const ObjCClassSymbolPrefix;
 @property (nonatomic, readonly, getter=isInDataSection) BOOL inDataSection;
 @property (nonatomic, readonly, getter=isInBssSection) BOOL inBssSection;
 @property (nonatomic, readonly) NSUInteger referenceType;
-@property (nonatomic, readonly) NSString *referenceTypeName;
-@property (nonatomic, readonly) NSString *shortTypeDescription;
-@property (nonatomic, readonly) NSString *longTypeDescription;
+@property (nonatomic, readonly, copy) NSString *referenceTypeName;
+@property (nonatomic, readonly, copy) NSString *shortTypeDescription;
+@property (nonatomic, readonly, copy) NSString *longTypeDescription;
 
 - (NSComparisonResult)compare:(CDSymbol *)other;
 - (NSComparisonResult)compareByName:(CDSymbol *)other;

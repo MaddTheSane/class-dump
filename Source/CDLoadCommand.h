@@ -24,7 +24,7 @@
 @property (nonatomic, readonly) uint32_t cmdsize;
 @property (nonatomic, readonly) BOOL mustUnderstandToExecute;
 
-@property (nonatomic, readonly) NSString *commandName;
+@property (nonatomic, readonly, copy) NSString *commandName;
 
 - (void)appendToString:(NSMutableString *)resultString verbose:(BOOL)isVerbose;
 

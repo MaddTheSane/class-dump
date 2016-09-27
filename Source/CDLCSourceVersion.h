@@ -7,6 +7,6 @@
 
 @interface CDLCSourceVersion : CDLoadCommand
 
-@property (nonatomic, readonly) NSString *sourceVersionString;
+@property (nonatomic, readonly, copy) NSString *sourceVersionString;
 
 @end

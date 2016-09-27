@@ -5,7 +5,7 @@
 
 #include <mach-o/reloc.h>
 
-typedef NS_ENUM(NSUInteger, CDRelocationSize) {
+typedef NS_ENUM(uint32_t, CDRelocationSize) {
     CDRelocationInfoSize_8Bit  = 0,
     CDRelocationInfoSize_16Bit = 1,
     CDRelocationInfoSize_32Bit = 2,

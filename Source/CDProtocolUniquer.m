@@ -10,9 +10,9 @@
 
 @implementation CDProtocolUniquer
 {
-    NSMutableDictionary *_protocolsByAddress; // non-uniqued
+    NSMutableDictionary<NSNumber*,CDOCProtocol*> *_protocolsByAddress; // non-uniqued
     NSMutableDictionary<NSString*,CDOCProtocol*> *_uniqueProtocolsByName;
-    NSMutableDictionary *_uniqueProtocolsByAddress;
+    NSMutableDictionary<NSNumber*,CDOCProtocol*> *_uniqueProtocolsByAddress;
 }
 
 - (id)init;

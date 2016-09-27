@@ -12,10 +12,10 @@
 
 @property (weak, readonly) CDLCSegment *segment;
 
-@property (nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly, copy) NSData *data;
 
-@property (nonatomic, readonly) NSString *segmentName;
-@property (nonatomic, readonly) NSString *sectionName;
+@property (nonatomic, readonly, copy) NSString *segmentName;
+@property (nonatomic, readonly, copy) NSString *sectionName;
 
 @property (nonatomic, readonly) NSUInteger addr;
 @property (nonatomic, readonly) NSUInteger size;

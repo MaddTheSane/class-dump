@@ -7,11 +7,11 @@
 
 @interface CDStructureInfo : NSObject <NSCopying>
 
-- (id)initWithType:(CDType *)type;
+- (instancetype)initWithType:(CDType *)type;
 
 - (NSString *)shortDescription;
 
-@property (readonly) CDType *type;
+@property (readonly, copy) CDType *type;
 
 @property (assign) NSUInteger referenceCount;
 - (void)addReferenceCount:(NSUInteger)count;
@@ -21,7 +21,7 @@
 
 - (void)generateTypedefName:(NSString *)baseName;
 
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly, copy) NSString *name;
 
 - (NSComparisonResult)ascendingCompareByStructureDepth:(CDStructureInfo *)other;
 - (NSComparisonResult)descendingCompareByStructureDepth:(CDStructureInfo *)other;

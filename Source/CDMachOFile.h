@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, CDByteOrder) {
 };
 
 @class CDLCSegment;
-@class CDLCDyldInfo, CDLCDylib, CDMachOFile, CDLCSymbolTable, CDLCDynamicSymbolTable, CDLCVersionMinimum, CDLCSourceVersion, CDLoadCommand, CDLCRunPath;
+@class CDLCDyldInfo, CDLCDylib, CDMachOFile, CDLCSymbolTable, CDLCDynamicSymbolTable, CDLCVersionMinimum, CDLCSourceVersion, CDLoadCommand, CDLCRunPath, CDLCDylinker;
 
 @interface CDMachOFile : CDFile
 
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, CDByteOrder) {
 @property (readonly, copy) NSArray<CDLCSegment*> *segments;
 @property (readonly, copy) NSArray<NSString*> *runPaths;
 @property (readonly, copy) NSArray<CDLCRunPath*> *runPathCommands;
-@property (readonly, copy) NSArray<CDLoadCommand*> *dyldEnvironment;
+@property (readonly, copy) NSArray<CDLCDylinker*> *dyldEnvironment;
 @property (readonly, copy) NSArray<CDLoadCommand*> *reExportedDylibs;
 
 @property (strong) CDLCSymbolTable *symbolTable;
@@ -70,8 +70,8 @@ typedef NS_ENUM(NSUInteger, CDByteOrder) {
 - (NSString *)loadCommandString:(BOOL)isVerbose;
 - (NSString *)headerString:(BOOL)isVerbose;
 
-@property (nonatomic, readonly) NSUUID *UUID;
-@property (nonatomic, readonly) NSString *archName;
+@property (nonatomic, readonly, copy) NSUUID *UUID;
+@property (nonatomic, readonly, copy) NSString *archName;
 
 - (Class)processorClass;
 - (void)logInfoForAddress:(NSUInteger)address;

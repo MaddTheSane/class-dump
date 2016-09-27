@@ -7,6 +7,6 @@
 
 @interface CDLCFunctionStarts : CDLCLinkeditData
 
-@property (nonatomic, readonly) NSArray *functionStarts;
+@property (nonatomic, readonly) NSArray<NSNumber*> *functionStarts;
 
 @end

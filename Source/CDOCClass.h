@@ -13,7 +13,7 @@
 
 @property (strong) CDOCClassReference *superClassRef;
 @property (copy, readonly) NSString *superClassName;
-@property (strong) NSArray<CDOCInstanceVariable*> *instanceVariables;
+@property (copy) NSArray<CDOCInstanceVariable*> *instanceVariables;
 @property (assign, getter=isExported) BOOL exported;
 @property (assign, getter=isSwiftClass) BOOL swiftClass;
 

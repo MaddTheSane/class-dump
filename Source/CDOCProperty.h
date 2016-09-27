@@ -9,24 +9,24 @@
 
 - (instancetype)initWithName:(NSString *)name attributes:(NSString *)attributes;
 
-@property (readonly) NSString *name;
-@property (readonly) NSString *attributeString;
-@property (readonly) CDType *type;
-@property (readonly) NSArray *attributes;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *attributeString;
+@property (readonly, copy) CDType *type;
+@property (readonly, copy) NSArray *attributes;
 
-@property (strong) NSString *attributeStringAfterType;
+@property (copy) NSString *attributeStringAfterType;
 
-@property (nonatomic, readonly) NSString *defaultGetter;
-@property (nonatomic, readonly) NSString *defaultSetter;
+@property (nonatomic, readonly, copy) NSString *defaultGetter;
+@property (nonatomic, readonly, copy) NSString *defaultSetter;
 
-@property (strong) NSString *customGetter;
-@property (strong) NSString *customSetter;
+@property (copy) NSString *customGetter;
+@property (copy) NSString *customSetter;
 
-@property (nonatomic, readonly) NSString *getter;
-@property (nonatomic, readonly) NSString *setter;
+@property (nonatomic, readonly, copy) NSString *getter;
+@property (nonatomic, readonly, copy) NSString *setter;
 
-@property (readonly) BOOL isReadOnly;
-@property (readonly) BOOL isDynamic;
+@property (readonly, getter=isReadOnly) BOOL readOnly;
+@property (readonly, getter=isDynamic) BOOL dynamic;
 
 - (NSComparisonResult)ascendingCompareByName:(CDOCProperty *)other;
 

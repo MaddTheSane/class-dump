@@ -37,7 +37,7 @@
     if ([self.protocols count] > 0)
         [resultString appendFormat:@" <%@>", self.protocolsString];
 
-    return resultString;
+    return [resultString copy];
 }
 
 - (void)recursivelyVisit:(CDVisitor *)visitor;

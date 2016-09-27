@@ -27,7 +27,7 @@
 @property (weak) CDFatFile *fatFile;
 
 @property (nonatomic, readonly) CDArch arch;
-@property (nonatomic, readonly) NSString *archName;
+@property (nonatomic, readonly, copy) NSString *archName;
 
 @property (nonatomic, readonly) CDMachOFile *machOFile;
 

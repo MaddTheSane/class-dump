@@ -14,7 +14,7 @@
 static BOOL debugMerge = NO;
 
 @interface CDType ()
-@property (nonatomic, readonly) NSString *formattedStringForSimpleType;
+@property (nonatomic, readonly, copy) NSString *formattedStringForSimpleType;
 @end
 
 #pragma mark -

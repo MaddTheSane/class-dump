@@ -8,7 +8,7 @@
 @interface CDOCModule : NSObject
 
 @property (assign) uint32_t version;
-@property (strong) NSString *name;
+@property (copy) NSString *name;
 @property (strong) CDOCSymtab *symtab;
 
 - (NSString *)formattedString;

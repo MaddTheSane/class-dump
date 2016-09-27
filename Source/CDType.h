@@ -40,16 +40,16 @@
 
 - (NSString *)formattedString:(NSString *)previousName formatter:(CDTypeFormatter *)typeFormatter level:(NSUInteger)level;
 
-@property (nonatomic, readonly) NSString *typeString;
-@property (nonatomic, readonly) NSString *bareTypeString;
-@property (nonatomic, readonly) NSString *reallyBareTypeString;
-@property (nonatomic, readonly) NSString *keyTypeString;
+@property (nonatomic, readonly, copy) NSString *typeString;
+@property (nonatomic, readonly, copy) NSString *bareTypeString;
+@property (nonatomic, readonly, copy) NSString *reallyBareTypeString;
+@property (nonatomic, readonly, copy) NSString *keyTypeString;
 
 
 - (BOOL)canMergeWithType:(CDType *)otherType;
 - (void)mergeWithType:(CDType *)otherType;
 
-@property (nonatomic, readonly) NSArray *memberVariableNames;
+@property (nonatomic, readonly, copy) NSArray *memberVariableNames;
 - (void)generateMemberNames;
 
 // Phase 0

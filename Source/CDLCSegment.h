@@ -15,8 +15,8 @@ typedef NS_ENUM(uint32_t, CDSegmentProtectedMagic) {
 
 typedef NS_ENUM(NSUInteger, CDSegmentEncryptionType) {
     CDSegmentEncryptionType_None     = 0,
-    CDSegmentEncryptionType_AES      = 1, // 10.5 and earlier (AES)
-    CDSegmentEncryptionType_Blowfish = 2, // 10.6 (Blowfish)
+    CDSegmentEncryptionType_AES      = 1, ///< 10.5 and earlier (AES)
+    CDSegmentEncryptionType_Blowfish = 2, ///< 10.6 (Blowfish)
     CDSegmentEncryptionType_Unknown
 };
 
@@ -25,7 +25,7 @@ extern NSString *CDSegmentEncryptionTypeName(CDSegmentEncryptionType type);
 @interface CDLCSegment : CDLoadCommand
 
 @property (strong) NSString *name;
-@property (strong) NSArray *sections;
+@property (strong) NSArray<CDSection*> *sections;
 
 @property (nonatomic, readonly) NSUInteger vmaddr;
 @property (nonatomic, readonly) NSUInteger fileoff;

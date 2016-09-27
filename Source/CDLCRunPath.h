@@ -7,7 +7,7 @@
 
 @interface CDLCRunPath : CDLoadCommand
 
-@property (readonly) NSString *path;
-@property (nonatomic, readonly) NSString *resolvedRunPath;
+@property (readonly, copy) NSString *path;
+@property (nonatomic, readonly, copy) NSString *resolvedRunPath;
 
 @end

@@ -28,13 +28,13 @@ typedef NS_ENUM(NSUInteger, CDTypeLexerState) {
 @property (nonatomic, assign) CDTypeLexerState state;
 @property (assign) BOOL shouldShowLexing;
 
-@property (nonatomic, readonly) NSString *string;
+@property (nonatomic, readonly, copy) NSString *string;
 - (int)scanNextToken;
 
 @property (strong) NSString *lexText;
 
 @property (nonatomic, readonly) unichar peekChar;
-@property (nonatomic, readonly) NSString *remainingString;
-@property (nonatomic, readonly) NSString *peekIdentifier;
+@property (nonatomic, readonly, copy) NSString *remainingString;
+@property (nonatomic, readonly, copy) NSString *peekIdentifier;
 
 @end

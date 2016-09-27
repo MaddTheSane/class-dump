@@ -7,12 +7,12 @@
 
 @interface CDLCDylib : CDLoadCommand
 
-@property (readonly) NSString *path;
+@property (readonly, copy) NSString *path;
 @property (nonatomic, readonly) uint32_t timestamp;
 @property (nonatomic, readonly) uint32_t currentVersion;
 @property (nonatomic, readonly) uint32_t compatibilityVersion;
 
-@property (nonatomic, readonly) NSString *formattedCurrentVersion;
-@property (nonatomic, readonly) NSString *formattedCompatibilityVersion;
+@property (nonatomic, readonly, copy) NSString *formattedCurrentVersion;
+@property (nonatomic, readonly, copy) NSString *formattedCompatibilityVersion;
 
 @end

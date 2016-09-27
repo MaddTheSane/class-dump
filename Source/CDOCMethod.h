@@ -7,11 +7,12 @@
 
 @interface CDOCMethod : NSObject <NSCopying>
 
-- (id)initWithName:(NSString *)name typeString:(NSString *)typeString;
-- (id)initWithName:(NSString *)name typeString:(NSString *)typeString address:(NSUInteger)address;
+- (instancetype)initWithName:(NSString *)name typeString:(NSString *)typeString;
+- (instancetype)initWithName:(NSString *)name typeString:(NSString *)typeString address:(NSUInteger)address NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-@property (readonly) NSString *name;
-@property (readonly) NSString *typeString;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *typeString;
 @property (assign) NSUInteger address;
 
 - (NSArray *)parsedMethodTypes;

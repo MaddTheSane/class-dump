@@ -21,6 +21,8 @@
 
     BOOL _isExported;
 }
+@synthesize exported = _isExported;
+@synthesize swiftClass = _isSwiftClass;
 
 - (id)init;
 {
